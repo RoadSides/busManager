@@ -7,7 +7,7 @@
 	<resultMap id="UserResultMap" type="User" >
 		<id property="userid" column="USERID" />
 		<result property="password" column="PASSWORD"/>
-		<result property="name" column="UNAME"/>
+		<result property="name" column="NAME"/>
 	</resultMap>
 	
 	<insert id="insert" parameterType="User">
@@ -19,7 +19,7 @@
 	
 	
 	<update id="update" parameterType="User">
-		update UserInfo set PASSWORD=#{password},NAME=#{name},
+		update UserInfo set PASSWORD=#{password},NAME=#{name}
 		where USERID=#{userid}
 	</update>
 	
