@@ -1,4 +1,4 @@
-package com.neuesoft.busManager;
+package com.neusoft.busManager;
 
 public class HelloWorld {
 	public static void main(String[] args) {

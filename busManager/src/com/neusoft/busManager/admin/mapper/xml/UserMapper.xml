@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.busManager.admin.mapper.IUserMapper">
+
+	<resultMap id="UserResultMap" type="User" >
+		<id property="userid" column="USERID" />
+		<result property="password" column="PASSWORD"/>
+		<result property="name" column="UNAME"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="User">
+		INSERT INTO UserInfo(USERID,PASSWORD,NAME) 
+		VALUES(#{userid},#{password},#{name})
+	</insert>
+	
+	
+	
+	
+	<update id="update" parameterType="User">
+		update UserInfo set PASSWORD=#{password},NAME=#{name},
+		where USERID=#{userid}
+	</update>
+	
+	<!-- 只修改操作员的密码 -->
+	<update id="updateForPasswowrd" parameterType="User">
+	   update UserInfo set PASSWORD=#{password}
+		where USERID=#{userid}
+	</update>
+	
+	<delete id="delete" parameterType="User">
+		delete from UserInfo where USERID=#{userid}
+	</delete>
+
+	<select id="select" parameterType="string" resultMap="UserResultMap">
+		select * from UserInfo where USERID=#{userid}
+	</select>
+	
+	<select id="selectListByAll" resultMap="UserResultMap">
+		select * from UserInfo
+	</select>
+	
+	<select id="selectListByAllWithPage" resultMap="UserResultMap">
+		select * from UserInfo
+	</select>
+	<select id="selectCountByAll" resultType="int">
+		select count(USERID) from UserInfo
+	</select>
+	
+	
+	
+</mapper>
+
